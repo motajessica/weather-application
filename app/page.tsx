@@ -1,7 +1,7 @@
 "use client";
-import { useState } from "react";
-
+import React, { useState } from "react";
 import Input from "./component/Input";
+
 
 const Home = () => {
   const [data, setData] = useState({});
@@ -10,7 +10,7 @@ const Home = () => {
 
   const url = `http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${location}&days=7&aqi=yes&alerts=yes`;
 
-  const handleSearch = async (e: { key: string; preventDefault: () => void; }) =>{
+  const handleSearch = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter"){
       e.preventDefault()
       try {
@@ -34,10 +34,10 @@ const Home = () => {
       <div className="bg-white/25 w-full rounded-lg flex flex-col h-fit">
         {/* Logo and Input */}
         <div className="flex flex-col  md:flex-row justify-between items-center p-12">
-          <Input />
+          <Input handleSearch={handleSearch} setLocation={setLocation} />
           <h1 className="mb-8 md:mb-0 order-1 text-white py-2 px4 rounded-xl italic font-bold ">
             {" "}
-            Weather{" "}
+            My Weather app{" "}
           </h1>
         </div>
       </div>
