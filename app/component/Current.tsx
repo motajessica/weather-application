@@ -30,6 +30,9 @@ const Current = ({ data }: any) => {
         <span className="text-white">{data.current.condition.text}</span>
           <div className="flex items-center text-black bg-white/90 px-2 py-2 rounded-xl">
             <CiLocationOn />
+            <span>
+              {data.location.name}, {data.location.country} 
+            </span>
           </div>
       </div>
     </>
