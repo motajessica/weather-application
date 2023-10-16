@@ -5,19 +5,6 @@ import Current from "./component/Current";
 import WeatherDetails from "./component/WeatherDetails";
 import WeatherForecast from "./component/WeatherForecast";
 
-// interface Current {
-//   condition: {
-//     icon: string;
-//     text: string;
-//   };
-//   temp_c: number;
-// }
-
-// interface WeatherData {
-//   current?: Current;
-// }
-
-
 const App = () => {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
@@ -25,8 +12,6 @@ const App = () => {
 
   const url = `http://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${location}&days=7&aqi=yes&alerts=yes`;
 
-  
-  
   const handleSearch = async (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter"){
       e.preventDefault()
@@ -65,7 +50,7 @@ const App = () => {
       <>
       <div>
         <Current data={data} />
-        <WeatherForecast />
+        <WeatherForecast data={data} />
       </div>
       <div>
         <WeatherDetails />

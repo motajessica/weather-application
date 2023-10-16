@@ -2,7 +2,23 @@ import React from "react";
 import { getCurretnDate } from "../utils/currentDate";
 import { CiLocationOn } from "react-icons/ci";
 
-const Current = ({ data }: any) => {
+interface CurrentProps {
+  data: {
+    current: {
+      condition: {
+        icon: string;
+        text: string;
+      };
+      temp_c: number;
+    };
+    location: {
+      name: string;
+      country: string;
+    };
+  };
+}
+
+const Current = ({ data }: CurrentProps) => {
   const currentDate = getCurretnDate();
   const weatherIcon = data.current.condition.icon;
   return (
@@ -28,12 +44,12 @@ const Current = ({ data }: any) => {
           <span>ºC</span>
         </p>
         <span className="text-white">{data.current.condition.text}</span>
-          <div className="flex items-center text-black bg-white/90 px-2 py-2 rounded-xl">
-            <CiLocationOn />
-            <span>
-              {data.location.name}, {data.location.country} 
-            </span>
-          </div>
+        <div className="flex items-center text-black bg-white/90 px-2 py-2 rounded-xl">
+          <CiLocationOn />
+          <span>
+            {data.location.name}, {data.location.country}
+          </span>
+        </div>
       </div>
     </>
   );
