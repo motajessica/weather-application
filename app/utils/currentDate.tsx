@@ -2,9 +2,9 @@ export const getCurretnDate = () => {
   const currentDate = new Date().toLocaleDateString
   ('en-US', {
     weekday: "long",
-    year: "numeric",
+    day: "numeric",
     month: "long",
-    day: "numeric"
+    year: "numeric",
   })
   return currentDate
 }
