@@ -76,14 +76,19 @@ const App = () => {
       </>
     )
   }
+
+const currentHour = new Date().getHours();
+const isDayTime = currentHour >= 6 && currentHour < 18;
+const backgroundColor = isDayTime ? "from-blue-500 to-blue-400 h-fit " : "bg-gradient-to-r from-[#3b4b66] to-[#34465a]";
+
   return (
-    <div className="bd-cover bg-gradient-to-r from-blue-500 to-blue-300 h-fit ">
+    <div className={`bd-cover bg-gradient-to-r ${backgroundColor} h-fit`}>
       <div className="bg-white/25 w-full rounded-lg flex flex-col h-fit">
         {/* Logo and Input */}
         <div className="flex flex-col  md:flex-row justify-between items-center p-12">
           <Input handleSearch={handleSearch} setLocation={setLocation} />
-          <h1 className="mb-8 md:mb-0 order-1 text-yellow-400 py-2 px4 rounded-xl italic font-bold ">
-            Logo Placeholder
+          <h1 className="mb-8 md:mb-0 order-1 text-white py-2 px4 rounded-xl italic font-bold ">
+            LOGO PLACEHOLDER
           </h1>
         </div>
         {content}

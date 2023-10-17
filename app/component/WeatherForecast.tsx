@@ -24,7 +24,7 @@ interface WeekForecastProps {
 
 const DayForecast = ({ data }: WeekForecastProps) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-8 w-full py-3">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-7 w-full py-3">
       {data.forecast.forecastday.map((day, index) => (
         <div
           key={index}

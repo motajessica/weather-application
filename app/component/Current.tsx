@@ -44,8 +44,8 @@ const Current = ({ data }: CurrentProps) => {
           <span>ºC</span>
         </p>
         <span className="text-white">{data.current.condition.text}</span>
-        <div className="flex items-center text-black bg-white/90 px-2 py-2 rounded-xl">
-          <CiLocationOn />
+        <div className="flex items-center text-black bg-white/80 px-2 py-2 rounded-xl">
+          <CiLocationOn fontSize={22}/>
           <span>
             {data.location.name}, {data.location.country}
           </span>
