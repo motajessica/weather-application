@@ -5,8 +5,25 @@ import Current from "./component/Current";
 import WeatherDetails from "./component/WeatherDetails";
 import WeatherForecast from "./component/WeatherForecast";
 
+
+interface WeatherData {
+  current: {
+    condition: {
+      icon: string;
+      text: string;
+    };
+    temp_c: number;
+  };
+  location: {
+    name: string;
+    country: string;
+  };
+  
+}
+
+
 const App = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState<WeatherData | null>(null);
   const [location, setLocation] = useState("");
   const [error, setError] = useState("");
 
@@ -26,13 +43,13 @@ const App = () => {
         setError("")
       } catch (error) {
         setError("City not found")
-        setData({})
+        setData(null)
       }
     }
   }
 
   let content;
-  if (Object.keys(data).length === 0 && error === '') {
+  if (data === null && error === '') {
     content =(
       <div>
         <h2>Welcome to the weather app </h2>

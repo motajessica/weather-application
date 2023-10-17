@@ -1,4 +1,6 @@
 interface DayForecast {
+  day: any;
+  date: string | number | Date;
   data: {
     forecast: any;
     current: {
