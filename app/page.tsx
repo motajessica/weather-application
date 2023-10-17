@@ -53,7 +53,7 @@ const App = () => {
     content =(
       <div className="text-white text-center h-screen mt-[5rem]">
         <h2 className="text-3xl font-bold mb-4">Welcome to the weather app </h2>
-        <p className="text-xl"> Enter a city name</p>
+        {/* <p className="text-xl"> Enter a city name</p> */}
       </div>
     )
   } else if ( error !== ''){ 
@@ -82,9 +82,8 @@ const App = () => {
         {/* Logo and Input */}
         <div className="flex flex-col  md:flex-row justify-between items-center p-12">
           <Input handleSearch={handleSearch} setLocation={setLocation} />
-          <h1 className="mb-8 md:mb-0 order-1 text-white py-2 px4 rounded-xl italic font-bold ">
-            {" "}
-            My Weather app{" "}
+          <h1 className="mb-8 md:mb-0 order-1 text-yellow-400 py-2 px4 rounded-xl italic font-bold ">
+            Logo Placeholder
           </h1>
         </div>
         {content}

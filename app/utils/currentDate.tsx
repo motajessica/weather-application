@@ -1,6 +1,6 @@
 export const getCurretnDate = () => {
   const currentDate = new Date().toLocaleDateString
-  ('en-US', {
+  ('en-NZ', {
     weekday: "long",
     day: "numeric",
     month: "long",

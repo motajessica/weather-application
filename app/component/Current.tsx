@@ -32,14 +32,14 @@ const Current = ({ data }: CurrentProps) => {
           {weatherIcon && (
             <div>
               <img
-                className="w-[50px] object-cover"
+                className="w-[70px] object-cover"
                 src={weatherIcon}
                 alt={data.current.condition.text}
               />
             </div>
           )}
         </div>
-        <p className="text-3xl tex-white">
+        <p className="text-3xl text-white">
           {data.current.temp_c.toFixed()}
           <span>ºC</span>
         </p>

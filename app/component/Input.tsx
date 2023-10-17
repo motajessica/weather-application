@@ -18,7 +18,7 @@ const Input = ({handleSearch, setLocation}: InputProps) => {
       onChange={(e) => setLocation(e.target.value)}
       />
       <div className="ml-[-25px] cursor-pointer text-white">
-        <BiSearchAlt />
+        <BiSearchAlt className="text-xl" />
       </div>
     </form>
   )
