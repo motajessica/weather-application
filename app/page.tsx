@@ -48,18 +48,18 @@ const App = () => {
   } else {
     content = (
       <>
-      <div>
+      <div className="flex md:flex-row flex-col p-12 items-center justify-between">
         <Current data={data} />
         <WeatherForecast data={data} />
       </div>
       <div>
-        <WeatherDetails />
+        <WeatherDetails data={data} />
       </div>
       </>
     )
   }
   return (
-    <div className="bd-cover bg-gradient-to-r from-blue-500 to-blue-300 h-screen">
+    <div className="bd-cover bg-gradient-to-r from-blue-500 to-blue-300 h-fit ">
       <div className="bg-white/25 w-full rounded-lg flex flex-col h-fit">
         {/* Logo and Input */}
         <div className="flex flex-col  md:flex-row justify-between items-center p-12">

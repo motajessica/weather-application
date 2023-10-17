@@ -1,8 +1,28 @@
-import React from "react";
+interface DayForecast {
+  data: {
+    forecast: any;
+    current: {
+      condition: {
+        icon: string;
+        text: string;
+      };
+      maxtemp_c: number;
+      mintemp_c: number;
+    };
+  };
+}
 
-const WeatherForecast = ({ data }) => {
+interface WeekForecastProps {
+  data: {
+    forecast: {
+      forecastday: DayForecast[];
+    }
+  }
+}
+
+const DayForecast = ({ data }: WeekForecastProps) => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-7 gap-8 w-full py-3">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-8 w-full py-3">
       {data.forecast.forecastday.map((day, index) => (
         <div
           key={index}
@@ -26,4 +46,4 @@ const WeatherForecast = ({ data }) => {
   );
 };
 
-export default WeatherForecast;
+export default DayForecast;
