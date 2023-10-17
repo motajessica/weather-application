@@ -51,15 +51,16 @@ const App = () => {
   let content;
   if (data === null && error === '') {
     content =(
-      <div>
-        <h2>Welcome to the weather app </h2>
+      <div className="text-white text-center h-screen mt-[5rem]">
+        <h2 className="text-3xl font-bold mb-4">Welcome to the weather app </h2>
+        <p className="text-xl"> Enter a city name</p>
       </div>
     )
   } else if ( error !== ''){ 
     content = (
-      <div>
-        <p>City not found</p>
-        <p>Enter a valid City</p>
+      <div className="text-white text-center h-screen mt-[5rem]">
+        <p className="text-3xl font-bold mb-4">City not found</p>
+        <p className="text-xl">Enter a valid City</p>
       </div>
     )
   } else {
