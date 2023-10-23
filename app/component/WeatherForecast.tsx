@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 interface DayForecast {
   day: any;
   date: string | number | Date;

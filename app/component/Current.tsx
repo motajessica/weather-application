@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { getCurretnDate } from "../utils/currentDate";
 import { CiLocationOn } from "react-icons/ci";
