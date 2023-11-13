@@ -22,7 +22,7 @@ type GroupedSuggestion = {
 
 
 
-const Input = ({setLocation}: InputProps) => {
+const Input = ({handleSearch, setLocation}: InputProps) => {
 
   const [search, setSearch] = useState(null)
   const loadOptions = async (inputValue: string) => {
@@ -104,6 +104,8 @@ const Input = ({setLocation}: InputProps) => {
         value={search}
         loadOptions={loadOptions}
         onChange={handleOnChange}
+        onKeyDown={handleSearch}
+
       />
       
       <div className="ml-[-25px] cursor-pointer text-white">
