@@ -15,6 +15,7 @@ interface WeatherData {
     temp_c: number;
   };
   location: {
+    localtime_epoch: number;
     name: string;
     country: string;
   };
@@ -78,9 +79,14 @@ const App = () => {
     )
   }
 
-const currentHour = new Date().getHours();
-const isDayTime = currentHour >= 6 && currentHour < 18;
+const locationTimeEpoch = data.location.localtime_epoch * 1000; 
+const locationDate = new Date(locationTimeEpoch);
+const locationHour = locationDate.getUTCHours();
+// const isDayTime = currentHour >= 6 && currentHour < 18;
+const isDayTime = locationHour >= 6 && locationHour < 18;
+
 const backgroundColor = isDayTime ? "from-blue-500 to-blue-400 h-fit " : "bg-gradient-to-r from-[#3b4b66] to-[#34465a]";
+
 
   return (
     <div className={`bd-cover bg-gradient-to-r ${backgroundColor} h-fit`}>

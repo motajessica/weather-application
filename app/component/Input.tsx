@@ -1,16 +1,13 @@
 // "use client"
-import React, { useState } from "react"
-import { BiSearchAlt } from "react-icons/bi"
-import { AsyncPaginate }from "react-select-async-paginate";
+import React, { useState } from "react";
+import { BiSearchAlt } from "react-icons/bi";
+import { AsyncPaginate } from "react-select-async-paginate";
 
 interface InputProps {
-  handleSearch: (event: React.KeyboardEvent<HTMLInputElement>) => void
-  setLocation: React.Dispatch<React.SetStateAction<string>>
+  handleSearch: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  setLocation: React.Dispatch<React.SetStateAction<string>>;
 }
 
-
-
-//
 type Suggestion = {
   label: string;
   value: string;
@@ -20,73 +17,74 @@ type GroupedSuggestion = {
   options: Suggestion[];
 };
 
-
-
-const Input = ({handleSearch, setLocation}: InputProps) => {
-
-  const [search, setSearch] = useState(null)
+const Input = ({ handleSearch, setLocation }: InputProps) => {
+  const [search, setSearch] = useState(null);
   const loadOptions = async (inputValue: string) => {
-    
-    const response = await fetch(`http://api.weatherapi.com/v1/search.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${inputValue}`);
-    const data: Array<{ id: number, name: string, country: string, url: string }> = await response.json();
-    
-    const options = data.map(city => ({
+    const response = await fetch(
+      `http://api.weatherapi.com/v1/search.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${inputValue}`
+    );
+    const data: Array<{
+      id: number;
+      name: string;
+      country: string;
+      url: string;
+    }> = await response.json();
+
+    const options = data.map((city) => ({
       label: `${city.name}, ${city.country}`,
-      value: city.url
-  }));
+      value: city.url,
+    }));
 
     return {
       options: options,
-      hasMore: false
+      hasMore: false,
     };
-};
+  };
   const handleOnChange = (option: any) => {
     setSearch(option);
-    setLocation(option.label); 
+    setLocation(option.label);
   };
 
   const customStyles = {
     control: (provided: any) => ({
       ...provided,
-      background: 'transparent !important',
-      borderColor: 'transparent', 
-      borderBottomColor: 'white',
-      borderBottomWidth: '2px',
-      borderBottomStyle: 'solid',  
-      boxShadow: 'none',
-      '&:hover': {
-        borderColor: 'transparent',
-        borderBottomColor: 'white',
+      background: "transparent !important",
+      borderColor: "transparent",
+      borderBottomColor: "white",
+      borderBottomWidth: "2px",
+      borderBottomStyle: "solid",
+      boxShadow: "none",
+      "&:hover": {
+        borderColor: "transparent",
+        borderBottomColor: "white",
       },
-      '&:focus': {
-        borderColor: 'transparent',
-        borderBottomColor: 'white',
-        outline: 'none',
-        boxShadow: 'none',
-      }
+      "&:focus": {
+        borderColor: "transparent",
+        borderBottomColor: "white",
+        outline: "none",
+        boxShadow: "none",
+      },
     }),
     placeholder: (provided: any) => ({
       ...provided,
-      color: 'white',
+      color: "white",
     }),
     input: (provided: any) => ({
       ...provided,
-      color: 'white',
+      color: "white",
     }),
     dropdownIndicator: (provided: any) => ({
       ...provided,
-      display: 'none',
+      display: "none",
     }),
     indicatorSeparator: (provided: any) => ({
       ...provided,
-      display: 'none',
+      display: "none",
     }),
   };
 
-
-
   return (
-    <form className="flex items-center md:w-2/4 w-full order-2"> 
+    <form className="flex items-center md:w-2/4 w-full order-2">
       {/* <input
       type="text"
       placeholder="Search City"
@@ -95,25 +93,22 @@ const Input = ({handleSearch, setLocation}: InputProps) => {
       onChange={(e) => setLocation(e.target.value)}
       /> */}
 
-
       <AsyncPaginate<Suggestion, GroupedSuggestion, unknown>
         placeholder="Search City"
         className="w-full bg-transparent placeholder-white outline-none text-slate-500"
-        debounceTimeout={600}
+        debounceTimeout={300}
         styles={customStyles}
         value={search}
         loadOptions={loadOptions}
         onChange={handleOnChange}
         onKeyDown={handleSearch}
-
       />
-      
+
       <div className="ml-[-25px] cursor-pointer text-white">
         <BiSearchAlt className="text-xl" />
       </div>
-     
     </form>
-  )
-}
+  );
+};
 
-export default Input
+export default Input;

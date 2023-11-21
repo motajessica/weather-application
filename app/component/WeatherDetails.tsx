@@ -73,7 +73,7 @@ const WeatherDetails: React.FC<WeatherDetailsProps> = ({ data }) => {
               <h3>{data.forecast.forecastday[0].astro.sunset}</h3>
             </div>
             <div>
-              <GiSunset fontSize={40}  />
+              <GiSunset fontSize={40} />
             </div>
           </div>
 
