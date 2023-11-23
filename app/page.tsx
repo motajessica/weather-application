@@ -79,19 +79,31 @@ const App = () => {
     )
   }
 
-// const locationTimeEpoch = data.location.localtime_epoch * 1000; 
-// const locationDate = new Date(locationTimeEpoch);
-// const locationHour = locationDate.getUTCHours();
+// const locationTimeEpoch = data?.location?.localtime_epoch * 1000 ?? 0; 
+// const locationDate = new Date(locationTimeEpoch) : null;
+// const locationHour = locationDate.getUTCHours() ?? 0;
 // const isDayTime = locationHour >= 6 && locationHour < 18;
 // const backgroundColor = isDayTime ? "from-blue-500 to-blue-400 h-fit " : "bg-gradient-to-r from-[#3b4b66] to-[#34465a]";
+
+// const locationTimeEpoch = data?.location?.localtime_epoch ?? 0;
+// const locationDate = locationTimeEpoch ? new Date(locationTimeEpoch * 1000) : null;
+// const locationHour = locationDate?.getUTCHours() ?? 0;
+// const isDayTime = locationHour ? locationHour >= 6 && locationHour < 18 : true;
+// const backgroundColor = isDayTime
+//   ? "from-blue-500 to-blue-400 h-fit "
+//   : "bg-gradient-to-r from-[#3b4b66] to-[#34465a]";
 
 const locationTimeEpoch = data?.location?.localtime_epoch ?? 0;
 const locationDate = locationTimeEpoch ? new Date(locationTimeEpoch * 1000) : null;
 const locationHour = locationDate?.getUTCHours() ?? 0;
 const isDayTime = locationHour ? locationHour >= 6 && locationHour < 18 : true;
+console.log('Is Day Time:', isDayTime);
+
 const backgroundColor = isDayTime
   ? "from-blue-500 to-blue-400 h-fit "
   : "bg-gradient-to-r from-[#3b4b66] to-[#34465a]";
+
+  console.log('Background Color:', backgroundColor);
 
 // const currentHour = new Date().getHours();
 // const isDayTime = currentHour >= 6 && currentHour < 18;
