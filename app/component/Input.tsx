@@ -20,17 +20,14 @@ type GroupedSuggestion = {
 const Input = ({ handleSearch, setLocation }: InputProps) => {
   const [search, setSearch] = useState(null);
   const loadOptions = async (inputValue: string) => {
-
     const trimmedInputValue = inputValue.trim();
 
-  if (!trimmedInputValue) {
-    return {
-      options: [],
-      hasMore: false,
-    };
-  }
-
-
+    if (!trimmedInputValue) {
+      return {
+        options: [],
+        hasMore: false,
+      };
+    }
 
     const response = await fetch(
       `http://api.weatherapi.com/v1/search.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${inputValue}`
