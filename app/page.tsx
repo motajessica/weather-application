@@ -5,7 +5,6 @@ import Current from "./component/Current";
 import WeatherDetails from "./component/WeatherDetails";
 import WeatherForecast from "./component/WeatherForecast";
 
-
 interface WeatherData {
   current: {
     condition: {
@@ -15,93 +14,82 @@ interface WeatherData {
     temp_c: number;
   };
   location: {
-    localtime: number
+    localtime: number;
     name: string;
     country: string;
   };
-  
 }
-
 
 const App = () => {
   const [data, setData] = useState<WeatherData | null>(null);
   const [location, setLocation] = useState("");
   const [error, setError] = useState("");
   const [backgroundColor, setBackgroundColor] = useState<string>(
-    "from-blue-500 to-blue-400 h-fit");
+    "from-blue-500 to-blue-400 h-fit"
+  );
 
   const url = `http://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${location}&days=7&aqi=yes&alerts=yes`;
 
   const handleSearch = async (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter"){
-      e.preventDefault()
+    if (e.key === "Enter") {
+      e.preventDefault();
       try {
-        const response = await fetch(url)
-        if(!response.ok){
-          throw new Error()
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error();
         }
-        const data = await response.json()
-        setData(data)
-        setLocation("")
-        setError("")
+        const data = await response.json();
+        setData(data);
+        setLocation("");
+        setError("");
       } catch (error) {
-        setError("City not found")
-        setData(null)
+        setError("City not found");
+        setData(null);
       }
     }
-  }
+  };
 
   let content;
-  if (data === null && error === '') {
-    content =(
+  if (data === null && error === "") {
+    content = (
       <div className="text-white text-center h-screen mt-[5rem]">
         <h2 className="text-3xl font-bold mb-4">Welcome to the weather app </h2>
         <h3>Please Enter a city</h3>
-        {/* <p className="text-xl"> Enter a city name</p> */}
       </div>
-    )
-  } else if ( error !== ''){ 
+    );
+  } else if (error !== "") {
     content = (
       <div className="text-white text-center h-screen mt-[5rem]">
         <p className="text-3xl font-bold mb-4">City not found</p>
         <p className="text-xl">Enter a valid City</p>
       </div>
-    )
+    );
   } else {
     content = (
       <>
-      <div className="flex md:flex-row flex-col p-12 items-center justify-between">
-        <Current data={data} />
-        <WeatherForecast data={data} />
-      </div>
-      <div>
-        <WeatherDetails data={data} />
-      </div>
+        <div className="flex md:flex-row flex-col p-12 items-center justify-between">
+          <Current data={data} />
+          <WeatherForecast data={data} />
+        </div>
+        <div>
+          <WeatherDetails data={data} />
+        </div>
       </>
-    )
+    );
   }
 
   useEffect(() => {
-    console.log('data changed')
-    console.log('data', data)
-    console.log('location', data &&  data.location)
-    console.log('time epoc', data && data.location && data.location.localtime)
     if (data && data.location && data.location.localtime) {
-      console.log('inside if')
+      console.log("inside if");
       const localtime = data.location.localtime;
       const locationHour = new Date(localtime).getHours();
       const isDayTime = locationHour >= 6 && locationHour < 18;
-
-      console.log('Is Day Time:', isDayTime);
-      console.log('locationHour', locationHour);
-
-  const backgroundColo = isDayTime
-  ? "from-blue-500 to-blue-400"
-  : "from-[#3b4b66] to-[#34465a]";
-  console.log('update background color', backgroundColo)
-setBackgroundColor(backgroundColo);
-}
-}, [data]);
+      const background = isDayTime
+        ? "from-blue-500 to-blue-400"
+        : "from-[#3b4b66] to-[#34465a]";
+      setBackgroundColor(background);
+    }
+  }, [data]);
 
   return (
     <div className={`bd-cover bg-gradient-to-r ${backgroundColor} h-fit`}>
@@ -119,5 +107,3 @@ setBackgroundColor(backgroundColo);
 };
 
 export default App;
-
-
