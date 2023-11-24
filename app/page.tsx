@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "./component/Input";
 import Current from "./component/Current";
 import WeatherDetails from "./component/WeatherDetails";
@@ -15,7 +15,7 @@ interface WeatherData {
     temp_c: number;
   };
   location: {
-    localtime_epoch: number;
+    localtime: number
     name: string;
     country: string;
   };
@@ -27,6 +27,8 @@ const App = () => {
   const [data, setData] = useState<WeatherData | null>(null);
   const [location, setLocation] = useState("");
   const [error, setError] = useState("");
+  const [backgroundColor, setBackgroundColor] = useState<string>(
+    "from-blue-500 to-blue-400 h-fit");
 
   const url = `http://api.weatherapi.com/v1/forecast.json?key=${process.env.NEXT_PUBLIC_API_KEY}&q=${location}&days=7&aqi=yes&alerts=yes`;
 
@@ -79,35 +81,27 @@ const App = () => {
     )
   }
 
-// const locationTimeEpoch = data?.location?.localtime_epoch * 1000 ?? 0; 
-// const locationDate = new Date(locationTimeEpoch) : null;
-// const locationHour = locationDate.getUTCHours() ?? 0;
-// const isDayTime = locationHour >= 6 && locationHour < 18;
-// const backgroundColor = isDayTime ? "from-blue-500 to-blue-400 h-fit " : "bg-gradient-to-r from-[#3b4b66] to-[#34465a]";
+  useEffect(() => {
+    console.log('data changed')
+    console.log('data', data)
+    console.log('location', data &&  data.location)
+    console.log('time epoc', data && data.location && data.location.localtime)
+    if (data && data.location && data.location.localtime) {
+      console.log('inside if')
+      const localtime = data.location.localtime;
+      const locationHour = new Date(localtime).getHours();
+      const isDayTime = locationHour >= 6 && locationHour < 18;
 
-// const locationTimeEpoch = data?.location?.localtime_epoch ?? 0;
-// const locationDate = locationTimeEpoch ? new Date(locationTimeEpoch * 1000) : null;
-// const locationHour = locationDate?.getUTCHours() ?? 0;
-// const isDayTime = locationHour ? locationHour >= 6 && locationHour < 18 : true;
-// const backgroundColor = isDayTime
-//   ? "from-blue-500 to-blue-400 h-fit "
-//   : "bg-gradient-to-r from-[#3b4b66] to-[#34465a]";
+      console.log('Is Day Time:', isDayTime);
+      console.log('locationHour', locationHour);
 
-const locationTimeEpoch = data?.location?.localtime_epoch ?? 0;
-const locationDate = locationTimeEpoch ? new Date(locationTimeEpoch * 1000) : null;
-const locationHour = locationDate?.getUTCHours() ?? 0;
-const isDayTime = locationHour ? locationHour >= 6 && locationHour < 18 : true;
-console.log('Is Day Time:', isDayTime);
-
-const backgroundColor = isDayTime
-  ? "from-blue-500 to-blue-400 h-fit "
-  : "bg-gradient-to-r from-[#3b4b66] to-[#34465a]";
-
-  console.log('Background Color:', backgroundColor);
-
-// const currentHour = new Date().getHours();
-// const isDayTime = currentHour >= 6 && currentHour < 18;
-// const backgroundColor = isDayTime ? "from-blue-500 to-blue-400 h-fit " : "bg-gradient-to-r from-[#3b4b66] to-[#34465a]";
+  const backgroundColo = isDayTime
+  ? "from-blue-500 to-blue-400"
+  : "from-[#3b4b66] to-[#34465a]";
+  console.log('update background color', backgroundColo)
+setBackgroundColor(backgroundColo);
+}
+}, [data]);
 
   return (
     <div className={`bd-cover bg-gradient-to-r ${backgroundColor} h-fit`}>
@@ -125,3 +119,5 @@ const backgroundColor = isDayTime
 };
 
 export default App;
+
+
