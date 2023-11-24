@@ -15,14 +15,13 @@ interface CurrentProps {
     location: {
       name: string;
       country: string;
-    }
-  } 
+    };
+  };
 }
 
 const Current = ({ data }: CurrentProps) => {
-
   if (!data) {
-    return null; 
+    return null;
   }
   const currentDate = getCurretnDate();
   const weatherIcon = data.current.condition.icon;
@@ -30,7 +29,6 @@ const Current = ({ data }: CurrentProps) => {
     <>
       <div className="flex flex-col mb-8 md:mb-0 items-start gap-2 w-1/2">
         <div className="flex items-center">
-          
           <div>
             <h1 className="text-3xl text-white">Today</h1>
             <p className="text-white"> {currentDate}</p>
@@ -51,7 +49,7 @@ const Current = ({ data }: CurrentProps) => {
         </p>
         <span className="text-white">{data.current.condition.text}</span>
         <div className="flex items-center text-black font-semibold bg-white/80 px-2 py-2 rounded-xl">
-          <CiLocationOn fontSize={22}/>
+          <CiLocationOn fontSize={22} />
           <span>
             {data.location.name}, {data.location.country}
           </span>

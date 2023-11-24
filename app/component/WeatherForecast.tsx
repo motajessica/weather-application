@@ -19,8 +19,8 @@ interface WeekForecastProps {
   data: {
     forecast: {
       forecastday: DayForecast[];
-    }
-  }
+    };
+  };
 }
 
 const DayForecast = ({ data }: WeekForecastProps) => {

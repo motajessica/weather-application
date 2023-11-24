@@ -94,14 +94,6 @@ const Input = ({ handleSearch, setLocation }: InputProps) => {
 
   return (
     <form className="flex items-center md:w-2/4 w-full order-2">
-      {/* <input
-      type="text"
-      placeholder="Search City"
-      className="w-full bg-transparent border-b-2 placeholder-white outline-none text-white"
-      onKeyDown={handleSearch}
-      onChange={(e) => setLocation(e.target.value)}
-      /> */}
-
       <AsyncPaginate<Suggestion, GroupedSuggestion, unknown>
         placeholder="Search City"
         className="w-full bg-transparent placeholder-white outline-none text-slate-500"
@@ -112,7 +104,6 @@ const Input = ({ handleSearch, setLocation }: InputProps) => {
         onChange={handleOnChange}
         onKeyDown={handleSearch}
       />
-
       <div className="ml-[-25px] cursor-pointer text-white">
         <BiSearchAlt className="text-xl" />
       </div>
