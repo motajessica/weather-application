@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { getCurretnDate } from "../utils/currentDate";
+// import { getCurretnDate } from "../utils/currentDate";
 import { CiLocationOn } from "react-icons/ci";
 
 interface CurrentProps {
@@ -23,7 +23,7 @@ const Current = ({ data }: CurrentProps) => {
   if (!data) {
     return null;
   }
-  const currentDate = getCurretnDate();
+  // const currentDate = getCurretnDate();
   const weatherIcon = data.current.condition.icon;
   return (
     <>
@@ -31,7 +31,7 @@ const Current = ({ data }: CurrentProps) => {
         <div className="flex items-center">
           <div>
             <h1 className="text-3xl text-white">Today</h1>
-            <p className="text-white"> {currentDate}</p>
+            {/* <p className="text-white"> {currentDate}</p> */}
           </div>
           {weatherIcon && (
             <div>

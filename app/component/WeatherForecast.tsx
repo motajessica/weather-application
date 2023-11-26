@@ -1,29 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-interface DayForecast {
-  day: any;
-  date: string | number | Date;
-  data: {
-    forecast: any;
-    current: {
-      condition: {
-        icon: string;
-        text: string;
-      };
-      maxtemp_c: number;
-      mintemp_c: number;
-    };
-  };
-}
+import { DayForecast, WeekForecastProps } from "../interfaces";
 
-interface WeekForecastProps {
-  data: {
-    forecast: {
-      forecastday: DayForecast[];
-    };
-  };
-}
-
-const DayForecast = ({ data }: WeekForecastProps) => {
+const DayForecastComponent = ({ data }: WeekForecastProps) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-7 w-full py-3">
       {data.forecast.forecastday.map((day, index) => (
@@ -49,4 +27,4 @@ const DayForecast = ({ data }: WeekForecastProps) => {
   );
 };
 
-export default DayForecast;
+export default DayForecastComponent;
