@@ -23,5 +23,19 @@ export interface WeekForecastProps {
   };
 }
 
-
+export interface CurrentProps {
+  data: {
+    current: {
+      condition: {
+        icon: string;
+        text: string;
+      };
+      temp_c: number;
+    };
+    location: {
+      name: string;
+      country: string;
+    };
+  };
+}
 

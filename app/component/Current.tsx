@@ -2,22 +2,7 @@
 import React from "react";
 // import { getCurretnDate } from "../utils/currentDate";
 import { CiLocationOn } from "react-icons/ci";
-
-interface CurrentProps {
-  data: {
-    current: {
-      condition: {
-        icon: string;
-        text: string;
-      };
-      temp_c: number;
-    };
-    location: {
-      name: string;
-      country: string;
-    };
-  };
-}
+import { CurrentProps } from "../interfaces";
 
 const Current = ({ data }: CurrentProps) => {
   if (!data) {
