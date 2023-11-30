@@ -54,3 +54,25 @@ export interface WeatherData {
   };
 }
 
+export interface WeatherDetailsProps {
+  data: {
+    current: {
+      feelslike_c: number;
+      wind_kph: number;
+      uv: number;
+      humidity: number;
+      precip_mm: number;
+      pressure_mb: number;
+    };
+    forecast: {
+      forecastday: [
+        {
+          astro: {
+            sunrise: string;
+            sunset: string;
+          };
+        }
+      ];
+    };
+  };
+}

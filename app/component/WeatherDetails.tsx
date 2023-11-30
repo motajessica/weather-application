@@ -7,29 +7,8 @@ import { BsFillCloudRainFill } from "react-icons/bs";
 import { WiHumidity } from "react-icons/wi";
 import { WiWindy } from "react-icons/wi";
 import { WiThermometer } from "react-icons/wi";
+import { WeatherDetailsProps } from "../interfaces";
 
-interface WeatherDetailsProps {
-  data: {
-    current: {
-      feelslike_c: number;
-      wind_kph: number;
-      uv: number;
-      humidity: number;
-      precip_mm: number;
-      pressure_mb: number;
-    };
-    forecast: {
-      forecastday: [
-        {
-          astro: {
-            sunrise: string;
-            sunset: string;
-          };
-        }
-      ];
-    };
-  };
-}
 
 const WeatherDetails: React.FC<WeatherDetailsProps> = ({ data }) => {
   return (
