@@ -4,21 +4,7 @@ import Input from "./component/Input";
 import Current from "./component/Current";
 import WeatherDetails from "./component/WeatherDetails";
 import WeatherForecast from "./component/WeatherForecast";
-
-interface WeatherData {
-  current: {
-    condition: {
-      icon: string;
-      text: string;
-    };
-    temp_c: number;
-  };
-  location: {
-    localtime: number;
-    name: string;
-    country: string;
-  };
-}
+import { WeatherData } from "./interfaces";
 
 const App = () => {
   const [data, setData] = useState<WeatherData | null>(null);

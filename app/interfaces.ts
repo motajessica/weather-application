@@ -39,3 +39,18 @@ export interface CurrentProps {
   };
 }
 
+export interface WeatherData {
+  current: {
+    condition: {
+      icon: string;
+      text: string;
+    };
+    temp_c: number;
+  };
+  location: {
+    localtime: number;
+    name: string;
+    country: string;
+  };
+}
+
