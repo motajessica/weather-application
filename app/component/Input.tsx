@@ -2,11 +2,7 @@
 import React, { useState } from "react";
 import { BiSearchAlt } from "react-icons/bi";
 import { AsyncPaginate } from "react-select-async-paginate";
-
-interface InputProps {
-  handleSearch: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-  setLocation: React.Dispatch<React.SetStateAction<string>>;
-}
+import { InputProps } from "../interfaces";
 
 type Suggestion = {
   label: string;
@@ -52,6 +48,7 @@ const Input = ({ handleSearch, setLocation }: InputProps) => {
   const handleOnChange = (option: any) => {
     setSearch(option);
     setLocation(option.label);
+    handleSearch(option.label); 
   };
 
   const customStyles = {
@@ -97,7 +94,7 @@ const Input = ({ handleSearch, setLocation }: InputProps) => {
       <AsyncPaginate<Suggestion, GroupedSuggestion, unknown>
         placeholder="Search City"
         className="w-full bg-transparent placeholder-white outline-none text-slate-500"
-        debounceTimeout={300}
+        debounceTimeout={500}
         styles={customStyles}
         value={search}
         loadOptions={loadOptions}

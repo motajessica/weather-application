@@ -54,6 +54,11 @@ export interface WeatherData {
   };
 }
 
+export interface InputProps {
+  handleSearch: (event: React.KeyboardEvent<HTMLInputElement>) => void;
+  setLocation: React.Dispatch<React.SetStateAction<string>>;
+}
+
 export interface WeatherDetailsProps {
   data: {
     current: {

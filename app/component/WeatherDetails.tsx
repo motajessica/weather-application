@@ -9,12 +9,11 @@ import { WiWindy } from "react-icons/wi";
 import { WiThermometer } from "react-icons/wi";
 import { WeatherDetailsProps } from "../interfaces";
 
-
 const WeatherDetails: React.FC<WeatherDetailsProps> = ({ data }) => {
   return (
     <>
       <div className="p-12">
-        <h1 className="mb-4 text-2xl text-white">Weather Details </h1>
+        <h1 className="mb-4 text-2xl text-white">Weather Details</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           <div className="bg-white/50 flex p-4 items-center justify-center gap-6 rounded-xl">
             <div className="text-xl">
