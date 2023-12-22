@@ -109,3 +109,5 @@ const Input = ({ handleSearch, setLocation }: InputProps) => {
 };
 
 export default Input;
+
+

@@ -83,7 +83,7 @@ const App = () => {
         <div className="flex flex-col  md:flex-row justify-between items-center p-12">
           <Input handleSearch={handleSearch} setLocation={setLocation} />
           <h1 className="mb-8 md:mb-0 order-1 text-white py-2 px4 rounded-xl italic font-bold ">
-            LOGO PLACEHOLDER
+          <img className="w-16 h-auto sm:w-16 md:w-24 lg:w-32" src="/logo.png" alt="Logo" />
           </h1>
         </div>
         {content}
